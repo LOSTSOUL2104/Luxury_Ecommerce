@@ -51,7 +51,7 @@ This repository contains the code for a luxury e-commerce platform.  The goal of
 4.  Configure environment variables:
 
     *   Create a `.env` file in the root directory.
-    *   Add the necessary environment variables (e.g., database connection string, API keys, etc.).  See `.env.example` for the required variables.
+
 
 5.  Start the application:
 
@@ -64,7 +64,7 @@ This repository contains the code for a luxury e-commerce platform.  The goal of
 1.  Start the development server:
 
     ```
-    npm run dev # or yarn dev (if using Next.js, this is the typical command)
+    npm run dev # or yarn run dev
     ```
 
 ## Future Enhancements
