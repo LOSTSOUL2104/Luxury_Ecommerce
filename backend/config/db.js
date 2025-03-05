@@ -24,7 +24,6 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, proces
 
 const connectDb = async () => {
   try {
-    // Create database if it doesn't exist
     await sequelize.query(`CREATE DATABASE IF NOT EXISTS \`${process.env.DB_NAME}\`;`);
     console.log(`Database "${process.env.DB_NAME}" ensured.`);
 

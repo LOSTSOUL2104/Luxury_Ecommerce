@@ -1,12 +1,30 @@
-const express = require('express');
+const express = require("express");
+const {
+  createUser,
+  loginUser,
+  logoutCurrentUser,
+  getAllUsers,
+  getCurrentUserProfile,
+  updateCurrentUserProfile,
+  deleteUserById,
+  getUserById,
+  updateUserById,
+} = require("../controllers/userController");
+
+const { authenticate, authorizeAdmin } = require("../middlewares/authMiddleware");
+
 const router = express.Router();
-const {createUser, loginUser, logoutCurrentUser, getAllUsers,getCurrentUserProfile} = require('../controllers/userController')
 
-router.route('/').post(createUser);
-router.post('/login', loginUser)
-router.post('/logout', logoutCurrentUser)
-router.get('/getAll', getAllUsers);
-router.get("getCurrentUser", getCurrentUserProfile)
+router.route("/").post(createUser).get(authenticate, authorizeAdmin, getAllUsers);
+router.post("/auth", loginUser);
+router.post("/logout", logoutCurrentUser);
+router.route("/profile").get(authenticate, getCurrentUserProfile).put(authenticate, updateCurrentUserProfile);
 
+// Admin Routes
+router
+  .route("/:id")
+  .delete(authenticate, authorizeAdmin, deleteUserById)
+  .get(authenticate, authorizeAdmin, getUserById)
+  .put(authenticate, authorizeAdmin, updateUserById);
 
 module.exports = router;

@@ -1,9 +1,8 @@
 import { DataTypes } from "sequelize";
-import sequelize from "../config/db.js"; // Import Sequelize instance
-import User from "./userModel.js"; // Import User model
-import Category from "./categoryModel.js"; // Import Category model
+import sequelize from "../config/db.js"; 
+import User from "./userModel.js"; 
+import Category from "./categoryModel.js"; 
 
-// Define Review Model
 const Review = sequelize.define("Review", {
   id: {
     type: DataTypes.INTEGER,
@@ -79,11 +78,11 @@ const Product = sequelize.define(
   }
 );
 
-// Define Associations
+
 Product.hasMany(Review, { foreignKey: "productId", as: "reviews" });
 Review.belongsTo(Product, { foreignKey: "productId" });
 
-Product.belongsTo(User, { foreignKey: "userId", as: "user" }); // Linking to User
-Product.belongsTo(Category, { foreignKey: "categoryId", as: "category" }); // Linking to Category
+Product.belongsTo(User, { foreignKey: "userId", as: "user" });
+Product.belongsTo(Category, { foreignKey: "categoryId", as: "category" }); 
 
 export { Product, Review };
