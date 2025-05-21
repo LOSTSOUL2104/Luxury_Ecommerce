@@ -8,12 +8,12 @@ const currency = 'inr'
 const deliveryCharge = 10
 
 // gateway initialize
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
+// const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
 
-const razorpayInstance = new razorpay({
-    key_id : process.env.RAZORPAY_KEY_ID,
-    key_secret : process.env.RAZORPAY_KEY_SECRET,
-})
+// const razorpayInstance = new razorpay({
+//     key_id : process.env.RAZORPAY_KEY_ID,
+//     key_secret : process.env.RAZORPAY_KEY_SECRET,
+// })
 
 // Placing orders using COD Method
 const placeOrder = async (req,res) => {
