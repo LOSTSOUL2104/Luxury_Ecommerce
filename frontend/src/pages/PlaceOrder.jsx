@@ -50,7 +50,7 @@ const PlaceOrder = () => {
           const { data } = await axios.post(
             backendUrl + "/api/order/verifyRazorpay",
             response,
-            { headers: { token } }
+            { headers: { Authorization: `Bearer ${token}` } }
           );
           if (data.success) {
             navigate("/orders");
@@ -97,7 +97,7 @@ const PlaceOrder = () => {
           response = await axios.post(
             backendUrl + "/api/order/place",
             orderData,
-            { headers: { token } }
+            { headers: { Authorization: `Bearer ${token}` } }
           );
           if (response.data.success) {
             setCartItems({});
@@ -111,7 +111,7 @@ const PlaceOrder = () => {
           response = await axios.post(
             backendUrl + "/api/order/stripe",
             orderData,
-            { headers: { token } }
+            { headers: { Authorization: `Bearer ${token}` } }
           );
           if (response.data.success) {
             const { session_url } = response.data;
@@ -125,7 +125,7 @@ const PlaceOrder = () => {
           response = await axios.post(
             backendUrl + "/api/order/razorpay",
             orderData,
-            { headers: { token } }
+            { headers: { Authorization: `Bearer ${token}` } }
           );
           if (response.data.success) {
             initPay(response.data.order);
